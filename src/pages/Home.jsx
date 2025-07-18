@@ -15,16 +15,18 @@ const Home = () => {
 
                 <motion.div
                     initial={{
-                        x: -1000,
-                        opacity: 0
+                        x: -700,
+                        opacity: 0,
+                        filter:"blur(10px)"
                     }}
                     animate={{
                         x: 0,
-                        opacity: 1
+                        opacity: 1,
+                        filter:"blur(0px)"
                     }}
                     transition={{
-                        ease: "anticipate",
-                        duration: 0.5
+                        // ease: "easeInOut",
+                        duration: 0.3
                     }}
                     whileHover={{
                         scale: 0.89
@@ -98,7 +100,7 @@ const Home = () => {
                             opacity: 1
                         }}
                         transition={{
-                            duration: 0.4,
+                            duration: 0.3,
                             ease: "anticipate"
                         }}
                         drag
@@ -130,15 +132,19 @@ const Home = () => {
             >
                 <div className='w-full flex justify-between items-center my-10'>
                     <h3 className='text-4xl font-bold tracking-wide text-white drop-shadow-lg'>Popular Videos</h3>
-                    <Link
-                        to="https://www.youtube.com/@TechBurner/featured"
-                        className='text-xl tracking-wider bg-[#EA2F14] outline-none px-4 py-2 rounded-lg flex gap-2 items-center shadow-lg'
+                    <motion.button
+                        whileHover={{
+                            scale: 1.10,
+                            boxShadow: "1px 1px 100px #FCEF91"
+                        }}
+                        onClick={() => window.open("https://www.youtube.com/@TechBurner/featured", "_blank")}
+                        className='text-xl tracking-wider bg-[#EA2F14] outline-none px-4 py-2 rounded-lg flex gap-2 items-center shadow-lg cursor-pointer'
                         target="_blank"
                         rel="noopener noreferrer"
                     >
                         <FaYoutube />
                         Visit Channel
-                    </Link>
+                    </motion.button>
                 </div>
                 <motion.div
                     className='flex justify-between gap-6'

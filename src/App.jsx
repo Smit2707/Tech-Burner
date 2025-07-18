@@ -8,7 +8,7 @@ import CustomCursor from './components/CustomCursor'
 
 const App = () => {
   return (
-    <div className='p-5 pb-0 relative min-h-screen overflow-hidden w-full bg-[#FF6A00] text-white'>
+    <div className='px-15 pt-5 pb-0 relative min-h-screen overflow-hidden w-full bg-gradient-to-br from-yellow-400 to-orange-600 text-white'>
       <CustomCursor />
       {/* <ThemeToggle  /> */}
       <Navbar/>

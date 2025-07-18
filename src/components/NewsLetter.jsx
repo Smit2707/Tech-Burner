@@ -10,8 +10,8 @@ const NewsLetter = () => {
         className="flex flex-col md:flex-row rounded-xl overflow-hidden bg-transparent border w-full mx-auto my-8 tracking-widest">
             {/* Left Section */}
             <div className="flex-1 p-10 flex flex-col justify-center">
-                <span className="text-[#FCEF91] font-semibold mb-4">Subscribe to our weekly drop and get the latest YouTube videos, unfiltered takes on new tech launches, and insider scoops – before anyone else.</span>
-                <h2 className="text-gray-800 text-lg md:text-xl font-bold leading-tighter mb-6">
+                <span className="text-[#FCEF91] text-xs font-extralight mb-4">Subscribe to our weekly drop and get the latest YouTube videos, unfiltered takes on new tech launches, and insider scoops – before anyone else.</span>
+                <h2 className="text-gray-800 text-lg md:text-lg  font-bold leading-tight mb-6">
                     ✅ Be the first to know when a new video drops <br />
                     🚀 Get deep dives on product launches – phones, gadgets, apps & more <br />
                     🎯 Exclusive behind-the-scenes & community-only updates

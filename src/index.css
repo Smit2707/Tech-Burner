@@ -21,3 +21,8 @@ footer {
   /* background: linear-gradient(135deg, #ff6b00, #ffcc00); */
   background-color: transparent;
 }
+
+::selection{
+  background-color: #E6521F;
+  color: #FCEF91;
+}
