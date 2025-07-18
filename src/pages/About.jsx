@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FaYoutube } from "react-icons/fa6";
+import { FaYoutube, FaRocket, FaTshirt, FaAward, FaCrown, FaBriefcase, FaLightbulb, FaStore } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Card, CardHeader, CardFooter, Image, Button } from "@heroui/react";
 
@@ -23,6 +23,64 @@ const About = () => {
       },
     }),
   };
+
+  const timelineData = [
+    {
+      year: "2014",
+      title: "First YouTube Upload",
+      icon: <FaYoutube />,
+      color: "bg-red-500"
+    },
+    {
+      year: "2018",
+      title: "Became Full-time Content Creator",
+      icon: <FaRocket />,
+      color: "bg-yellow-400"
+    },
+    {
+      year: "2020",
+      title: "Launched Brands: Layers & BurnerBits",
+      icon: <FaTshirt />,
+      color: "bg-indigo-500"
+    },
+    {
+      year: "2021",
+      title: "Crossed 5M Subscribers",
+      icon: <FaAward />,
+      color: "bg-green-500"
+    },
+    {
+      year: "2022",
+      title: "Hit 10M Subscriber Milestone",
+      icon: <FaCrown />,
+      color: "bg-orange-500"
+    },
+    {
+      year: "2023",
+      title: "Expanded Into Techburner Studios",
+      icon: <FaBriefcase />,
+      color: "bg-pink-600"
+    },
+    {
+      year: "2024",
+      title: "Launched New Tech Channel + Office Vlogs",
+      icon: <FaLightbulb />,
+      color: "bg-teal-500"
+    },
+    {
+      year: "2024",
+      title: "Launched Anarc Watch Brand",
+      icon: <FaStore />,
+      color: "bg-lime-600"
+    },
+    {
+      year: "2025",
+      title: "Opened Tech Product Retail Experience Store",
+      icon: <FaStore />,
+      color: "bg-purple-600"
+    }
+  ];
+
 
   return (
     <section className="min-h-screen bg-transparent text-[#FCEF91] px-6 py-12 tracking-[0.125em]">
@@ -292,22 +350,48 @@ const About = () => {
         </motion.div>
 
         {/* Timeline */}
-        <motion.div
-          className="space-y-4"
-          initial="hidden"
-          whileInView="visible"
+        <motion.section
+          className="bg-transparent px-0 py-14  text-white"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          variants={fadeUp}
-          custom={5}
         >
-          <h2 className="text-3xl font-bold">🕒 Timeline</h2>
-          <ul className="list-inside list-disc text-lg space-y-1">
-            <li>2014: First YouTube upload</li>
-            <li>2018: Full-time content creator</li>
-            <li>2020: Launched Layers & BurnerBits</li>
-            <li>2022: 10M subscribers milestone</li>
-          </ul>
-        </motion.div>
+          <div className="w-full mx-auto">
+            <motion.h2
+              className="text-4xl font-bold mb-10 flex items-center gap-3"
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true }}
+            >
+              🕒 TIMELINE
+            </motion.h2>
+
+            <div className="relative border-l-4 border-black/30 pl-6 space-y-10">
+              {timelineData.map((event, i) => (
+                <motion.div
+                  key={i}
+                  className="relative"
+                  initial={{ opacity: 0, x: -50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: i * 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <div
+                    className={`absolute -left-8 top-1 w-8 h-8 rounded-full ${event.color} flex items-center justify-center text-white text-md shadow-md`}
+                  >
+                    {event.icon}
+                  </div>
+                  <div className="ml-4">
+                    <div className="text-2xl font-semibold text-[#FCEF91]">{event.year}</div>
+                    <p className="text-[#E6521F] text-lg tracking-wide font-[500]">{event.title}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
 
         {/* CTA */}
         <motion.div
