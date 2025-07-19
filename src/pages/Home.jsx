@@ -147,7 +147,7 @@ const Home = () => {
                 className='my-10'
             >
                 <div className='w-full flex justify-between items-center my-10'>
-                    <h3 className='text-4xl font-bold tracking-wide text-white drop-shadow-lg'>Popular Videos</h3>
+                    <h3 className='text-5xl font-bold tracking-wide text-white drop-shadow-lg'>Popular Videos</h3>
                     <motion.button
                         whileHover={{
                             scale: 1.10,
@@ -198,8 +198,8 @@ const Home = () => {
                 </motion.div>
             </motion.section>
 
-            <div style={{ height: '600px', position: 'relative' }}>
-                <h2 className='text-6xl'>Gallery of Greats</h2>
+            <div className='mb-44 mt-14' style={{ height: '600px', position: 'relative' }}>
+                <h2 className='text-5xl font-semibold tracking-widest '>Gallery of Greats</h2>
                 <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
             </div>
 

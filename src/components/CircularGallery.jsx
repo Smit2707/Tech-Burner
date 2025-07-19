@@ -325,11 +325,11 @@ class App {
     }
     createMedias(items, bend = 1, textColor, borderRadius, font) {
         const defaultItems = [
-            { image: `https://www.layers.shop/cdn/shop/files/Anarc-dark-3.webp?v=1751618050&width=1100`, text: "Anarc Smartwatch" },
             { image: `/beast1.jpg`, text: "Beast" },
             { image: `/beast2.jpg`, text: "Mr. Beast" },
             { image: `/bryan1.jpg`, text: "Bryan Johnson " },
             { image: `/samsung_event.jpg`, text: "Samsung Event" },
+            { image: `https://www.layers.shop/cdn/shop/files/Anarc-dark-3.webp?v=1751618050&width=1100`, text: "Anarc Smartwatch" },
             { image: `/hardik.jpg`, text: "Hardik Pandya" },
             { image: `/gta.jpg`, text: "GTA" },
             { image: `/karan.jpg`, text: "Karan Aujla" },
