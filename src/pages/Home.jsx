@@ -4,6 +4,9 @@ import { Link, Links } from 'react-router-dom'
 import { FaYoutube } from "react-icons/fa";
 import VideoCard from '../components/VideoCard';
 import NewsLetter from '../components/NewsLetter';
+import ScrollVelocity from '../components/ScrollVelocity';
+import ModelViewer from '../components/ModalViewer';
+import CircularGallery from '../components/CircularGallery';
 
 const Home = () => {
     const constraintRef = useRef(null);
@@ -17,12 +20,12 @@ const Home = () => {
                     initial={{
                         x: -700,
                         opacity: 0,
-                        filter:"blur(10px)"
+                        filter: "blur(10px)"
                     }}
                     animate={{
                         x: 0,
                         opacity: 1,
-                        filter:"blur(0px)"
+                        filter: "blur(0px)"
                     }}
                     transition={{
                         // ease: "easeInOut",
@@ -121,7 +124,20 @@ const Home = () => {
                     </motion.button>
                 </motion.div>
             </section>
+            {/* <div className='flex justify-between'>
+                <div className='text-6xl'>tech burner</div>
+                <ModelViewer
+                    url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
+                    width="60%"
+                    height={400}
+                />
+            </div> */}
 
+            <ScrollVelocity
+                texts={['Tech Burner', 'Scroll Down']}
+                velocity={100}
+                className="custom-scroll-text tracking-wider text-[#FCEF91]"
+            />
 
             {/* popular videos */}
             <motion.section
@@ -181,6 +197,11 @@ const Home = () => {
                     ))}
                 </motion.div>
             </motion.section>
+
+            <div style={{ height: '600px', position: 'relative' }}>
+                <h2 className='text-6xl'>Gallery of Greats</h2>
+                <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
+            </div>
 
             <NewsLetter />
         </motion.div>

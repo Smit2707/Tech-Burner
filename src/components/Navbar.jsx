@@ -60,6 +60,7 @@ const Navbar = () => {
                         </motion.div>
                     ))}
                 </motion.div>
+                
                 <button
                     className='btn btn-outline text-xl tracking-widest'> Login </button>
             </nav>
