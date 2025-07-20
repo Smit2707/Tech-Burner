@@ -5,6 +5,7 @@ import Shop from '../pages/Shop'
 import About from '../pages/About'
 import Team from '../pages/Team'
 import Contact from '../pages/Contact'
+import Signup from '../pages/Signup'
 
 const MainRoute = () => {
     return (
@@ -14,6 +15,8 @@ const MainRoute = () => {
             <Route path='/about' element={<About />} />
             <Route path='/team' element={<Team />} />
             <Route path='/contact' element={<Contact />} />
+            {/* <Route path='/login' element={<Login />} /> */}
+            <Route path='/signup' element={<Signup />} />
         </Routes>
     )
 }

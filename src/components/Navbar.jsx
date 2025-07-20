@@ -1,6 +1,7 @@
 import React from 'react'
 import { motion } from "motion/react"
 import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -13,6 +14,8 @@ const Navbar = () => {
         { label: "Team", path: "/team" },
     ];
 
+    const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
+    console.log(user)
     return (
         <motion.div
             className='text-[#E6521F]'
@@ -27,7 +30,7 @@ const Navbar = () => {
             transition={{
                 ease: "easeInOut",
                 duration: 0.5,
-                delay:0.5
+                delay: 0.5
             }}
         >
             <nav className='flex justify-between items-center'>
@@ -50,19 +53,38 @@ const Navbar = () => {
                             whileHover={{ y: 5 }}
                             whileTap={{ scale: 0.8 }}
                             onClick={() => navigate(item.path)}
-                            className={`text-xl cursor-pointer tracking-widest ${
-                                location.pathname === item.path
-                                    ? "font-bold text-[#FCEF91] underline"
-                                    : ""
-                            }`}
+                            className={`text-xl cursor-pointer tracking-widest ${location.pathname === item.path
+                                ? "font-bold text-[#FCEF91] underline"
+                                : ""
+                                }`}
                         >
                             {item.label}
                         </motion.div>
                     ))}
                 </motion.div>
-                
-                <button
-                    className='btn btn-outline text-xl tracking-widest'> Login </button>
+
+                {/* <Link
+                    to="/signup"
+                    className='btn btn-outline text-xl tracking-widest'> Login </Link> */}
+                <div>
+                    {isAuthenticated ?
+                        <>
+                            <button
+                            className='btn btn-soft text-lg font-extralight tracking-wider btn-warning'
+                                onClick={(e) => logout()}>
+                                Log Out
+                            </button>;
+                        </>
+                        :
+                        <>
+                            <button
+                            className='btn btn-soft text-lg font-extralight tracking-wider btn-accent'
+                                onClick={() => loginWithRedirect()}>
+                                Login
+                            </button>;
+                        </>
+                    }
+                </div>
             </nav>
         </motion.div>
     )

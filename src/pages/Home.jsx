@@ -200,7 +200,7 @@ const Home = () => {
 
             <div className='mb-44 mt-14' style={{ height: '600px', position: 'relative' }}>
                 <h2 className='text-5xl font-semibold tracking-widest '>Gallery of Greats</h2>
-                <CircularGallery bend={3} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} />
+                <CircularGallery bend={-2} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} scrollSpeed={0.3} />
             </div>
 
             <NewsLetter />
