@@ -73,7 +73,7 @@ const Navbar = () => {
                             className='btn btn-soft text-lg font-extralight tracking-wider btn-warning'
                                 onClick={(e) => logout()}>
                                 Log Out
-                            </button>;
+                            </button>
                         </>
                         :
                         <>
@@ -81,7 +81,7 @@ const Navbar = () => {
                             className='btn btn-soft text-lg font-extralight tracking-wider btn-accent'
                                 onClick={() => loginWithRedirect()}>
                                 Login
-                            </button>;
+                            </button>
                         </>
                     }
                 </div>

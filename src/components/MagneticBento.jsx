@@ -8,40 +8,40 @@ const MOBILE_BREAKPOINT = 768;
 
 const cardData = [
   {
-    color: "#060010",
-    title: "Analytics",
+    image: "https://overlaysnow.com/cdn/shop/files/Fearless_Navy_Sweatshirt_03_3953f158-a02c-4119-89e9-179f2623d842.jpg?v=1733221908&width=800",
+    title: "Under 999 Cloths",
     description: "Track user behavior",
-    label: "Insights",
+    label: "Under 999",
   },
   {
-    color: "#060010",
-    title: "Dashboard",
+    image: "https://overlaysnow.com/cdn/shop/files/OV5377.jpg?v=1741691967&width=800", 
+    title: "Latest T-shirts Collection",
     description: "Centralized data view",
-    label: "Overview",
+    label: "T-shirts",
   },
   {
-    color: "#060010",
-    title: "Collaboration",
+    image: "https://overlaysnow.com/cdn/shop/files/1L9A7782.jpg?v=1729757955&width=800",
+    title: "winter ready collection",
     description: "Work together seamlessly",
-    label: "Teamwork",
+    label: "Jackkets & winters",
   },
   {
-    color: "#060010",
-    title: "Automation",
-    description: "Streamline workflows",
-    label: "Efficiency",
-  },
-  {
-    color: "#060010",
-    title: "Integration",
-    description: "Connect favorite tools",
-    label: "Connectivity",
-  },
-  {
-    color: "#060010",
-    title: "Security",
+    image: "https://overlaysnow.com/cdn/shop/files/T-shirts_3_2.png?v=1751453554&width=800",
+    title: "The Savanna Shirt",
     description: "Enterprise-grade protection",
-    label: "Protection",
+    label: "Shirts",
+  },
+  {
+    image: "https://overlaysnow.com/cdn/shop/files/1_9182080b-2af1-4f9f-98c0-4fc97d00453a.jpg?v=1745242987&width=800",
+    title: "Articwave Oversized T-Shirt",
+    description: "Streamline workflows",
+    label: "Oversized fit",
+  },
+  {
+    image: "https://overlaysnow.com/cdn/shop/products/DSC01984_3.jpg?v=1681974519&width=800",
+    title: "Olive Green Men's Cargo Pants",
+    description: "Connect favorite tools",
+    label: "Cargo pants",
   },
 ];
 
@@ -489,7 +489,7 @@ const GlobalSpotlight = ({
 
 const BentoCardGrid = ({ children, gridRef }) => (
   <div
-    className="bento-section grid gap-2 p-3 max-w-[54rem] select-none relative"
+    className="bento-section grid gap-2 p-3 max-w-[100%] select-none relative"
     style={{ fontSize: "clamp(1rem, 0.9rem + 0.5vw, 1.5rem)" }}
     ref={gridRef}
   >
@@ -676,7 +676,9 @@ const MagicBento = ({
               }`;
 
             const cardStyle = {
-              backgroundColor: card.color || "var(--background-dark)",
+              backgroundImage: `url(${card.image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
               borderColor: "var(--border-color)",
               color: "var(--white)",
               "--glow-x": "50%",
@@ -699,16 +701,16 @@ const MagicBento = ({
                   enableMagnetism={enableMagnetism}
                 >
                   <div className="card__header flex justify-between gap-3 relative text-white">
-                    <span className="card__label text-base">{card.label}</span>
+                    <span className="card__label font-semibold tracking-wider text-4xl text-white/60">{card.label}</span>
                   </div>
                   <div className="card__content flex flex-col relative text-white">
                     <h3
-                      className={`card__title font-normal text-base m-0 mb-1 ${textAutoHide ? "text-clamp-1" : ""}`}
+                      className={`card__title text-2xl text-black/40 font-semibold tracking-wider m-0 mb-1 ${textAutoHide ? "text-clamp-1" : ""}`}
                     >
                       {card.title}
                     </h3>
                     <p
-                      className={`card__description text-xs leading-5 opacity-90 ${textAutoHide ? "text-clamp-2" : ""}`}
+                      className={`card__description text-base text-black/40 font-semibold tracking-widest leading-5 opacity-90 ${textAutoHide ? "text-clamp-2" : ""}`}
                     >
                       {card.description}
                     </p>

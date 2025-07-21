@@ -6,6 +6,8 @@ import About from '../pages/About'
 import Team from '../pages/Team'
 import Contact from '../pages/Contact'
 import Signup from '../pages/Signup'
+import Overlays from '../pages/Overlays'
+import Layers from '../pages/Layers'
 
 const MainRoute = () => {
     return (
@@ -17,6 +19,8 @@ const MainRoute = () => {
             <Route path='/contact' element={<Contact />} />
             {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/signup' element={<Signup />} />
+            <Route path='/overlays' element={<Overlays />} />
+            <Route path='/layers' element={<Layers />} />
         </Routes>
     )
 }
