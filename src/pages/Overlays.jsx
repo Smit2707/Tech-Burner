@@ -301,7 +301,7 @@ const Overlays = () => {
                 </div>
             </motion.section>
 
-
+            {/* Newsletter */}
             <motion.section
                 initial={{
                     opacity: 0,

@@ -8,6 +8,8 @@ import Contact from '../pages/Contact'
 import Signup from '../pages/Signup'
 import Overlays from '../pages/Overlays'
 import Layers from '../pages/Layers'
+import ProductDetails from '../pages/ProductDetails'
+import Login from '../pages/Login'
 
 const MainRoute = () => {
     return (
@@ -19,8 +21,10 @@ const MainRoute = () => {
             <Route path='/contact' element={<Contact />} />
             {/* <Route path='/login' element={<Login />} /> */}
             <Route path='/signup' element={<Signup />} />
+            <Route path='/login' element={<Login />} />
             <Route path='/overlays' element={<Overlays />} />
             <Route path='/layers' element={<Layers />} />
+            <Route path='/product-details' element={<ProductDetails />} />
         </Routes>
     )
 }

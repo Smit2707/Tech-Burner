@@ -1,10 +1,51 @@
+import { nanoid } from 'nanoid';
 import React from 'react';
+import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors }
+  } = useForm({
+    defaultValues: {
+      f_name: "",
+      l_name: "",
+      email: "",
+      password: "",
+      checked: false
+    }
+  });
+
+
+  const handleCreateAccount = (data) => {
+    data.id = nanoid();
+    console.log(data)
+    localStorage.setItem("registerUserData", JSON.stringify(data));
+    localStorage.setItem("loginData", JSON.stringify({
+      email: data.email,
+      password: data.password
+    }));
+    toast.success("Account has been created successfully!");
+    reset();
+    navigate("/login");
+  }
+
+  const onError = (errors) => {
+    const firstError = Object.values(errors)[0];
+    if (firstError) {
+      toast.error(firstError.message);
+    }
+  };
   return (
-    <div className="min-h-fit flex items-center justify-center bg-transparent px-4 tracking-widest">
-      <div className="flex w-full max-w-5xl bg-white text-[#1a1a2e] rounded-2xl overflow-hidden shadow-2xl border-2 border-[#0D75FF]">
-        
+    <div className="min-h-fit flex items-center justify-center mt-10 bg-transparent px-4 tracking-widest">
+      <div className="flex w-full max-w-5xl bg-white text-[#1a1a2e] rounded-2xl overflow-hidden shadow-2xl border border-[#0D75FF]">
+
         {/* Left Image Section */}
         <div className="w-1/2 relative hidden md:block">
           <img
@@ -21,16 +62,18 @@ const Signup = () => {
         <div className="w-full md:w-1/2 p-8 md:p-12 space-y-6">
           <h2 className="text-3xl font-semibold text-[#0D75FF]">Create an account</h2>
           <p className="text-sm text-gray-500">
-            Already have an account? <a href="#" className="text-[#0D75FF] underline">Log in</a>
+            Already have an account? <Link to="/login" className="text-[#0D75FF] underline">Log in</Link>
           </p>
 
           <div className="grid grid-cols-2 gap-4">
             <input
+              {...register("f_name", { required: "Please Enter First Name" })}
               type="text"
               placeholder="First name"
               className="px-4 py-3 bg-[#e7f0fd] text-[#1a1a2e] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D75FF]"
             />
             <input
+              {...register("l_name", { required: "Please Enter Last Name" })}
               type="text"
               placeholder="Last name"
               className="px-4 py-3 bg-[#e7f0fd] text-[#1a1a2e] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D75FF]"
@@ -38,6 +81,13 @@ const Signup = () => {
           </div>
 
           <input
+            {...register("email", {
+              required: "Please Enter Email Address",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Please enter a valid email address"
+              }
+            })}
             type="email"
             placeholder="Email"
             className="w-full px-4 py-3 bg-[#e7f0fd] text-[#1a1a2e] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D75FF]"
@@ -45,6 +95,7 @@ const Signup = () => {
 
           <div className="relative">
             <input
+              {...register("password", { required: "Please Enter Password" })}
               type="password"
               placeholder="Enter your password"
               className="w-full px-4 py-3 bg-[#e7f0fd] text-[#1a1a2e] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0D75FF]"
@@ -55,14 +106,14 @@ const Signup = () => {
           </div>
 
           <label className="flex items-center text-sm gap-2">
-            <input type="checkbox" className="accent-[#FFA000]" />
+            <input {...register("checked", { required: "Please Check the terms and conditions" })} type="checkbox" className="accent-[#FFA000]" />
             <span>
               I agree to the{' '}
               <a href="#" className="underline text-[#0D75FF]">Terms & Conditions</a>
             </span>
           </label>
 
-          <button className="w-full bg-[#0D75FF] hover:bg-[#02577a] transition-all text-white py-3 rounded-lg font-semibold shadow hover:shadow-lg">
+          <button onClick={handleSubmit(handleCreateAccount, onError)} className="w-full bg-[#0D75FF] hover:bg-[#02577a] transition-all text-white py-3 rounded-lg font-semibold shadow hover:shadow-lg">
             Create account
           </button>
 

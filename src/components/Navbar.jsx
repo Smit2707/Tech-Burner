@@ -14,8 +14,8 @@ const Navbar = () => {
         { label: "Team", path: "/team" },
     ];
 
-    const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
-    console.log(user)
+    // const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
+    // console.log(user)
     return (
         <motion.div
             className='text-[#E6521F]'
@@ -63,10 +63,10 @@ const Navbar = () => {
                     ))}
                 </motion.div>
 
-                {/* <Link
-                    to="/signup"
-                    className='btn btn-outline text-xl tracking-widest'> Login </Link> */}
-                <div>
+                <Link
+                    to="/login"
+                    className='btn btn-outline text-xl tracking-widest'> Login </Link>
+                {/* <div>
                     {isAuthenticated ?
                         <>
                             <button
@@ -84,7 +84,7 @@ const Navbar = () => {
                             </button>
                         </>
                     }
-                </div>
+                </div> */}
             </nav>
         </motion.div>
     )

@@ -76,28 +76,27 @@ export default function CommunitySlider() {
   };
 
   return (
-    <motion.div 
-    initial={{
-        scale:0.8,
-        opacity:0,
-        filter:"blur(10px)"
-    }}
-    animate={{
-        scale:1,
-        opacity:1,
-        filter:"blur(0px)"
-    }}
-    transition={{
-        duration:0.8,
-        delay:0.4,
-        ease:"anticipate"
-    }}
-    className="relative min-h-[80vh] bg-black mt-10 flex items-center justify-center tracking-widest overflow-hidden rounded-[2rem]">
+    <motion.div
+      initial={{
+        scale: 0.8,
+        opacity: 0,
+        filter: "blur(10px)"
+      }}
+      animate={{
+        scale: 1,
+        opacity: 1,
+        filter: "blur(0px)"
+      }}
+      transition={{
+        duration: 0.8,
+        delay: 0.4,
+        ease: "anticipate"
+      }}
+      className="relative min-h-[80vh] bg-black mt-10 flex items-center justify-center tracking-widest overflow-hidden rounded-[2rem]">
       {/* Animated background image */}
       <div
-        className={`absolute inset-0 bg-[50%_15%] bg-cover transition-transform transition-opacity duration-700 ease-out ${
-          fadeState === 'fade-in' ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
-        }`}
+        className={`absolute inset-0 bg-[50%_15%] bg-cover transition-transform transition-opacity duration-700 ease-out ${fadeState === 'fade-in' ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
+          }`}
         style={{ backgroundImage: `url('${images[current]}')` }}
         key={current}
       />
@@ -105,9 +104,8 @@ export default function CommunitySlider() {
 
       {/* Animated content */}
       <div
-        className={`relative z-20 flex flex-col gap-5 justify-center px-20 items-start w-full py-24 transition-opacity duration-700 ease-in-out ${
-          fadeState === 'fade-in' ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`relative z-20 flex flex-col gap-5 justify-center px-20 items-start w-full py-24 transition-opacity duration-700 ease-in-out ${fadeState === 'fade-in' ? 'opacity-100' : 'opacity-0'
+          }`}
       >
         <h1 className="text-white text-4xl sm:text-5xl font-extrabold uppercase tracking-wider mb-4">
           {slides[current].title}
@@ -129,20 +127,18 @@ export default function CommunitySlider() {
             onClick={() => goTo(idx)}
           >
             <span
-              className={`text-lg font-semibold transition-all duration-300 ${
-                current === idx
+              className={`text-lg font-semibold transition-all duration-300 ${current === idx
                   ? "text-white drop-shadow-lg"
                   : "text-gray-400 group-hover:text-gray-200"
-              }`}
+                }`}
             >
               {String(idx + 1).padStart(2, "0")}
             </span>
             <span
-              className={`transition-all duration-300 text-xs ${
-                current === idx
+              className={`transition-all duration-300 text-xs ${current === idx
                   ? "text-white"
                   : "text-gray-400 group-hover:text-gray-200"
-              }`}
+                }`}
             >
               {slide.label}
             </span>
