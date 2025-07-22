@@ -2,7 +2,7 @@ import React from 'react'
 import { Card, CardHeader, CardFooter, Image, Button } from "@heroui/react";
 import { motion } from "motion/react"
 import { div } from 'motion/react-client';
-import MagicBento from '../components/MagneticBento';
+import MagicBento from '../components/MagicBento';
 import ShopCard from '../components/ShopCard';
 import { FaTshirt } from "react-icons/fa";
 import { IoWatch } from "react-icons/io5";
