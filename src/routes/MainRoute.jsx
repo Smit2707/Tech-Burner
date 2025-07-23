@@ -10,6 +10,7 @@ import Overlays from '../pages/Overlays'
 import Layers from '../pages/Layers'
 import ProductDetails from '../pages/ProductDetails'
 import Login from '../pages/Login'
+import ButAnarc from '../pages/ButAnarc'
 
 const MainRoute = () => {
     return (
@@ -25,6 +26,7 @@ const MainRoute = () => {
             <Route path='/overlays' element={<Overlays />} />
             <Route path='/layers' element={<Layers />} />
             <Route path='/product-details' element={<ProductDetails />} />
+            <Route path='/anarc-details' element={<ButAnarc />} />
         </Routes>
     )
 }

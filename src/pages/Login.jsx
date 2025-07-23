@@ -8,7 +8,6 @@ const Login = () => {
     const navigate = useNavigate();
     const registerUserData = JSON.parse(localStorage.getItem("registerUserData"))
     const { email, password } = JSON.parse(localStorage.getItem("loginData"))
-    const [isLogin, setIsLogin] = useState(false)
     // console.log(email, password)
     // const { email, password } = userdata;
     // console.log(email, password)
@@ -25,9 +24,7 @@ const Login = () => {
         if (data.email == email && data.password == password) {
             console.log("login success")
             toast.success("Login Successfully!");
-            setIsLogin(true);
-            console.log(isLogin)
-            localStorage.setItem("isLogin", setIsLogin(true))
+            localStorage.setItem("isLogin", true)
             reset();
             navigate("/");
         }

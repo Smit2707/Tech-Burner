@@ -2,11 +2,13 @@ import React from 'react'
 import { motion } from "motion/react"
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth0 } from "@auth0/auth0-react";
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const navigate = useNavigate();
     const location = useLocation();
-
+    const isLogin = localStorage.getItem("isLogin");
+    console.log(isLogin)
     const navItems = [
         { label: "Shop", path: "/shop" },
         { label: "About", path: "/about" },
@@ -16,6 +18,11 @@ const Navbar = () => {
 
     // const { loginWithRedirect, user, isAuthenticated, logout } = useAuth0();
     // console.log(user)
+    const handleLogout = () => {
+        toast.success("Logged Out Successfully");
+        localStorage.setItem("isLogin", "false")
+        localStorage.removeItem("loginData")
+    }
     return (
         <motion.div
             className='text-[#E6521F]'
@@ -62,10 +69,19 @@ const Navbar = () => {
                         </motion.div>
                     ))}
                 </motion.div>
-
-                <Link
-                    to="/login"
-                    className='btn btn-outline text-xl tracking-widest'> Login </Link>
+                {isLogin == "true" ?
+                    <button
+                        onClick={handleLogout}
+                        className='bg-red-600 text-white px-3 py-1 text-center rounded-sm text-lg cursor-pointer  tracking-wider hover:scale-[1.05] duration-300 ease active:scale-[0.95]'>
+                        Logout
+                    </button>
+                    :
+                    <Link
+                        to="/signup"
+                        className='bg-[#FCEF91] text-[#EA2F14] px-3 py-1 text-center rounded-sm text-lg cursor-pointer font-bold tracking-widest hover:scale-[1.05] duration-300 ease active:scale-[0.95]'>
+                        Sign Up
+                    </Link>
+                }
                 {/* <div>
                     {isAuthenticated ?
                         <>

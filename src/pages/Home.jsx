@@ -25,30 +25,35 @@ const Home = () => {
             subtitle:
                 "More than just a brand, we’re a movement—connecting creatives, skaters, and trendsetters who define the streets.",
             label: "Community-Driven Culture",
+            route: "/overlays"
         },
         {
             title: "Limited Drops, Maximum Impact",
             subtitle: "Exclusive drops for those who want to make a statement without compromise.",
             label: "Limited Drops, Maximum Impact",
+            route: "/layers"
         },
         {
             title: "Built for the Streets",
             subtitle: "Durable, comfortable, and made to stand up to any challenge.",
             label: "Built for the Streets",
+            route: "/overlays"
         },
         {
             title: "Art Meets Attitude",
             subtitle: "Where artistic expression finds its streetwise edge.",
             label: "Art Meets Attitude",
+            route: "/layers"
         },
         {
             title: "Future-Ready Fashion",
             subtitle: "Pioneering materials and cuts for the next generation.",
             label: "Future-Ready Fashion",
+            route: "/overlays"
         },
     ];
 
-    const SLIDE_DURATION = 4000;
+    const SLIDE_DURATION = 5000;
     const FADE_DURATION = 800; // in ms
     const [current, setCurrent] = useState(0);
     const [fadeState, setFadeState] = useState('fade-in');
@@ -213,7 +218,7 @@ const Home = () => {
                     delay: 0.4,
                     ease: "anticipate"
                 }}
-                className="relative min-h-[80vh] bg-black my-10 flex items-center justify-center tracking-widest overflow-hidden rounded-[2rem]">
+                className="relative min-h-[80vh] bg-black my-10 flex items-center justify-center tracking-widest overflow-hidden rounded-br-[8rem] rounded-tl-[8rem]">
                 {/* Animated background image */}
                 <div
                     className={`absolute inset-0 bg-[50%_15%] bg-cover transition-transform transition-opacity duration-700 ease-out ${fadeState === 'fade-in' ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
@@ -234,9 +239,9 @@ const Home = () => {
                     <p className="text-gray-200 text-lg">
                         {slides[current].subtitle}
                     </p>
-                    <button className="mt-8 px-8 py-3 rounded-full bg-white text-black font-medium shadow-lg hover:bg-gray-100 transition focus:outline-none">
+                    <Link to={slides[current].route} className="mt-8 px-8 py-3 rounded-full bg-white text-black font-medium shadow-lg transition hover:bg-transparent hover:text-white hover:border focus:outline-none">
                         Shop now →
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Bottom navigation */}
@@ -277,18 +282,20 @@ const Home = () => {
                 />
             </div> */}
 
-            <ScrollVelocity
-                texts={['Tech Burner', 'Scroll Down']}
-                velocity={100}
-                className="custom-scroll-text tracking-wider text-[#FCEF91]"
-            />
+            <div className='w-screen mt-15 -mx-15 px-0'>
+                <ScrollVelocity
+                    texts={['Tech Burner', 'Scroll Down']}
+                    velocity={100}
+                    className="custom-scroll-text tracking-wider text-[#FCEF91]"
+                />
+            </div>
 
             {/* popular videos */}
             <motion.section
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: "anticipate" }}
-                className='my-10'
+                className='mt-15'
             >
                 <div className='w-full flex justify-between items-center my-10'>
                     <h3 className='text-5xl font-bold tracking-wide text-white drop-shadow-lg'>Popular Videos</h3>
@@ -342,9 +349,9 @@ const Home = () => {
                 </motion.div>
             </motion.section>
 
-            <div className='mb-44 mt-14' style={{ height: '600px', position: 'relative' }}>
+            <div className='mb-15 mt-15' style={{ height: '600px', position: 'relative' }}>
                 <h2 className='text-5xl font-semibold tracking-widest '>Gallery of Greats</h2>
-                <CircularGallery bend={-2} textColor="#ffffff" borderRadius={0.05} scrollEase={0.02} scrollSpeed={0.3} />
+                <CircularGallery bend={-2} textColor="#ffffff" borderRadius={0.05} scrollEase={0.03} scrollSpeed={0.3} />
             </div>
 
             <NewsLetter />

@@ -60,7 +60,7 @@ const Signup = () => {
 
         {/* Right Form Section */}
         <div className="w-full md:w-1/2 p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-semibold text-[#0D75FF]">Create an account</h2>
+          <h2 className="text-3xl font-semibold text-[#0D75FF] ">Create an account</h2>
           <p className="text-sm text-gray-500">
             Already have an account? <Link to="/login" className="text-[#0D75FF] underline">Log in</Link>
           </p>
@@ -113,7 +113,7 @@ const Signup = () => {
             </span>
           </label>
 
-          <button onClick={handleSubmit(handleCreateAccount, onError)} className="w-full bg-[#0D75FF] hover:bg-[#02577a] transition-all text-white py-3 rounded-lg font-semibold shadow hover:shadow-lg">
+          <button onClick={handleSubmit(handleCreateAccount, onError)} className="w-full hover:bg-[#0D75FF] text-[#0D75FF] bg-transparent hover:border border transition-all hover:text-[#fff] py-3 rounded-lg font-semibold shadow hover:shadow-lg">
             Create account
           </button>
 
