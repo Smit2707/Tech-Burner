@@ -86,27 +86,73 @@ const About = () => {
     <section className="min-h-screen bg-transparent text-[#FCEF91] px-6 py-12 tracking-[0.125em]">
       <div className="max-w-6xl mx-auto space-y-16">
 
-        {/* Hero Section */}
-        <motion.div
-          className="text-center space-y-4"
-          initial="hidden"
-          animate="visible"
-          variants={fadeUp}
-        >
-          <h1 className="text-5xl font-bold">
-            Hi, I'm <span className="text-[#E6521F]">Tech Burner</span>
-          </h1>
-          <p className="text-xl max-w-2xl mx-auto">
-            Engineer turned tech entertainer, making gadgets fun and relatable since 2014.
-          </p>
-        </motion.div>
+        {/* Hero Section - Modern Awwwards Style */}
+        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#18181b] rounded-br-[12rem] rounded-tl-[12rem] rounded-xl">
+          {/* Animated background blobs */}
+          <div className="absolute top-[-10%] left-[-10%] w-[400px] h-[400px] bg-gradient-to-br from-[#FCEF91]/40 via-[#E6521F]/30 to-transparent rounded-full blur-3xl opacity-70 animate-blob pointer-events-none" />
+          <div className="absolute bottom-[-10%] right-[-10%] w-[350px] h-[350px] bg-gradient-to-tr from-[#E6521F]/30 via-[#FCEF91]/20 to-transparent rounded-full blur-2xl opacity-60 animate-blob2 pointer-events-none" />
+          <div className="relative z-10 w-full max-w-4xl mx-auto flex flex-col items-center text-center px-4 sm:px-8">
+            <motion.h1
+              className="text-5xl sm:text-7xl md:text-8xl font-black leading-tight tracking-tight mb-8 whitespace-pre-line"
+              initial={{ opacity: 0, y: 60 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.9, ease: 'easeOut' }}
+            >
+              <span className="block">Hi, I'm</span>
+              <span className="block bg-gradient-to-r from-[#FCEF91] via-[#E6521F] to-[#FCEF91] bg-clip-text text-transparent animate-gradient-x px-2 font-black">
+                Tech Burner
+              </span>
+            </motion.h1>
+            <motion.p
+              className="text-lg sm:text-2xl max-w-2xl text-white/80 font-medium mb-8"
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
+            >
+              Engineer turned <span className="text-[#E6521F] font-semibold">tech entertainer</span>, making gadgets fun and relatable since 2014.
+            </motion.p>
+            <motion.a
+              href="#stats"
+              className="inline-block mt-2 px-8 py-4 rounded-full bg-gradient-to-r from-[#FCEF91] via-[#E6521F] to-[#FCEF91] text-black font-bold text-lg shadow-lg hover:scale-105 hover:shadow-2xl transition-transform duration-300"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4, ease: 'easeOut' }}
+            >
+              See My Journey
+            </motion.a>
+          </div>
+          <style>{`
+            @keyframes gradient-x {
+              0%, 100% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+            }
+            .animate-gradient-x {
+              background-size: 200% 200%;
+              animation: gradient-x 4s ease-in-out infinite;
+            }
+            @keyframes blob {
+              0%, 100% { transform: scale(1); opacity: 0.7; }
+              50% { transform: scale(1.15); opacity: 1; }
+            }
+            .animate-blob {
+              animation: blob 7s ease-in-out infinite;
+            }
+            @keyframes blob2 {
+              0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.6; }
+              50% { transform: scale(1.1) rotate(20deg); opacity: 0.9; }
+            }
+            .animate-blob2 {
+              animation: blob2 8s ease-in-out infinite;
+            }
+          `}</style>
+        </section>
 
         {/* Bio Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
           <motion.img
             src="/tech3.jpg"
             alt="Tech Burner"
-            className="rounded-2xl shadow-xl"
+            className="rounded-none shadow-xl"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
@@ -128,24 +174,67 @@ const About = () => {
         </div>
 
         {/* Stats Section */}
-        <motion.div
-          className="bg-white text-black rounded-xl p-8 shadow-md"
-          initial="hidden"
-          whileInView="visible"
+        <motion.section
+          className="w-full flex justify-center items-center py-12"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: 'easeOut' }}
           viewport={{ once: true }}
-          variants={fadeUp}
-          custom={3}
         >
-          <h2 className="text-3xl font-bold mb-6 text-center">🔥 Tech Burner in Numbers</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center font-semibold">
-            <div>🎥 1500+ Videos</div>
-            <div>👥 10M+ Subscribers</div>
-            <div>📸 2M+ Instagram Fam</div>
-            <div>🧢 Brand: Layers</div>
-            <div>📱 App: Overlays</div>
-            <div>🏆 Diamond Play Button</div>
-          </div>
-        </motion.div>
+          <motion.div
+            className="bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl px-6 sm:px-10 py-10 w-full max-w-5xl border border-[#FCEF91]/30"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          >
+            <motion.h2
+              className="text-3xl sm:text-4xl font-extrabold mb-10 text-center text-[#FCEF91] drop-shadow-lg tracking-wider"
+              initial={{ opacity: 0, y: -20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              viewport={{ once: true }}
+            >
+              🔥 Tech Burner in Numbers
+            </motion.h2>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center">
+              {/* Animated Stat Item */}
+              {[
+                { icon: '🎥', label: 'Videos', value: 1500, suffix: '+' },
+                { icon: '👥', label: 'Subscribers', value: 10, suffix: 'M+' },
+                { icon: '📸', label: 'Instagram Fam', value: 2, suffix: 'M+' },
+                { icon: '🧢', label: 'Brand', value: 'Layers', isText: true },
+                { icon: '📱', label: 'App', value: 'Overlays', isText: true },
+                { icon: '🏆', label: 'Award', value: 'Diamond Play Button', isText: true },
+              ].map((stat, i) => (
+                <motion.div
+                  key={stat.label}
+                  className="flex flex-col items-center justify-center bg-white/5 rounded-xl py-6 px-2 shadow-md hover:scale-105 transition-transform duration-300 border border-[#FCEF91]/10"
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 + i * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="text-4xl sm:text-5xl mb-2 drop-shadow-lg animate-pulse">{stat.icon}</span>
+                  {stat.isText ? (
+                    <span className="text-xl sm:text-2xl font-bold text-[#E6521F] mb-1">{stat.value}</span>
+                  ) : (
+                    <motion.span
+                      className="text-3xl sm:text-4xl font-extrabold text-[#FCEF91] mb-1"
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      transition={{ duration: 0.7, delay: 0.3 + i * 0.1 }}
+                    >
+                      {stat.value}
+                      <span className="text-2xl align-super">{stat.suffix}</span>
+                    </motion.span>
+                  )}
+                  <span className="text-base sm:text-lg text-white/80 font-medium tracking-wide mt-1">{stat.label}</span>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </motion.section>
 
         {/* Channels & Brands */}
         <motion.div
@@ -239,7 +328,7 @@ const About = () => {
               </CardHeader>
               <motion.img
                 src={isHovered
-                  ? "https://i.ytimg.com/an_webp/vEz9Rx6yu8I/mqdefault_6s.webp?du=3000&sqp=CILF58MG&rs=AOn4CLCRjkGMWoJ-U3bQv7bLq-vbIGOj6A" // gif
+                  ? "https://i.ytimg.com/an_webp/VQeySLmSMhc/mqdefault_6s.webp?du=3000&sqp=CMOSh8QG&rs=AOn4CLD7tJ5IHgt52ID18ApJ6g29i7Aecg" // gif
                   : "https://i.ytimg.com/vi/vEz9Rx6yu8I/maxresdefault.jpg"} // static image
                 alt="Card background"
                 className="z-0 w-full h-full object-cover"
@@ -257,7 +346,7 @@ const About = () => {
               </CardHeader>
               <motion.img
                 src={isHovered1
-                  ? "https://i.ytimg.com/an_webp/glEAB6ou8Gw/mqdefault_6s.webp?du=3000&sqp=CJDp58MG&rs=AOn4CLCNAeOSibbR38FwKX4MCqnh8AfuPA" // gif
+                  ? "https://i.ytimg.com/an_webp/1USExPyX9ds/mqdefault_6s.webp?du=3000&sqp=COGph8QG&rs=AOn4CLAk80tj4NhbEOcCLKyKnCLG3tLp1w" // gif
                   : "https://i.ytimg.com/vi/lhORDlvi_UA/oardefault.jpg?sqp=-oaymwEoCJUDENAFSFqQAgHyq4qpAxcIARUAAIhC2AEB4gEKCBgQAhgGOAFAAQ==&rs=AOn4CLDB7_1w6YVWpAW7cphCmxf5I9-DAg"} // static image
                 alt="Card background"
                 className="z-0 w-full h-full object-cover object-[50%_7%]"
@@ -276,7 +365,7 @@ const About = () => {
               </CardHeader>
               <motion.img
                 src={isHovered2
-                  ? "https://i.ytimg.com/an_webp/d2Rc7DrUs9M/mqdefault_6s.webp?du=3000&sqp=CNX558MG&rs=AOn4CLB0PtMWxlPfkPyv1y2ndPYWeqpYyw" // gif
+                  ? "https://i.ytimg.com/an_webp/3-hEHTPfUWY/mqdefault_6s.webp?du=3000&sqp=CPKTh8QG&rs=AOn4CLAslXJCOKPmJhKpGDQ_ngBTcCyOYw" // gif
                   : "https://yt3.googleusercontent.com/aGwnust-77fb4NBJAzClyiH-3X7XOK2nXosg24ELFbT385xuysXXw38y3N5bhAGqtbCwVNVh=s160-c-k-c0x00ffffff-no-rj"}// static image
                 alt="Card background"
                 className="z-0 w-full h-full object-cover"
@@ -303,14 +392,14 @@ const About = () => {
                 animate={{ opacity: isHovered3 ? 1 : 0.8, scale: isHovered3 ? 1.05 : 1 }}
                 transition={{ duration: 0.3 }}
               />
-              <CardFooter className="absolute bg-white/30 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between p-2">
+              <CardFooter className="absolute bg-white/40 bottom-0 border-t-1 border-zinc-100/50 z-10 justify-between p-2">
                 <div>
                   <p className="text-black text-tiny">Available soon.</p>
-                  <p className="text-black text-tiny">Get notified.</p>
+                  <p className="text-black text-tiny">Go to store.</p>
                 </div>
-                <Button className="text-tiny" color="primary" radius="full" size="sm">
-                  Notify Me
-                </Button>
+                <Link to="/overlays" className="text-tiny" color="primary" radius="full" size="sm">
+                  Visit Store
+                </Link>
               </CardFooter>
             </Card>
             <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-7">
@@ -330,7 +419,7 @@ const About = () => {
                 transition={{ duration: 0.3 }}
               />
               <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
-                <div className="flex grow gap-2 items-center p-2">
+                <div className="flex grow gap-2 items-center p-0">
                   <Image
                     alt="Breathing app icon"
                     className="rounded-full w-10 h-11 bg-black"
@@ -341,56 +430,92 @@ const About = () => {
                     <p className="text-tiny text-white/60">Get anarc watch.</p>
                   </div>
                 </div>
-                <Button radius="full px-3" size="sm">
+                <Link to="/anarc-details" radius="full px-3" size="sm">
                   Buy Now
-                </Button>
+                </Link>
               </CardFooter>
             </Card>
           </motion.div>
         </motion.div>
 
-        {/* Timeline */}
+        {/* Eye-catching Timeline */}
         <motion.section
-          className="bg-transparent px-0 py-14  text-white"
+          className="relative w-screen overflow-x-hidden px-0 py-16 min-h-[80vh]"
+          // style={{ background: '#18181b' }}
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="w-full mx-auto">
+          {/* Subtle background pattern */}
+          <div className="absolute inset-0 pointer-events-none z-0 opacity-20"></div>
+          <div className="w-full px-0 sm:px-4 md:px-12 lg:px-32 xl:px-48 2xl:px-64 relative z-10">
             <motion.h2
-              className="text-4xl font-bold mb-10 flex items-center gap-3"
+              className="text-4xl sm:text-5xl font-extrabold mb-16 flex items-center gap-3 tracking-tight text-center justify-start text-[#FCEF91] drop-shadow-lg"
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
             >
-              🕒 TIMELINE
+              <span className="inline-block animate-pulse">🕒</span> TIMELINE
             </motion.h2>
 
-            <div className="relative border-l-4 border-black/30 pl-6 space-y-10">
-              {timelineData.map((event, i) => (
-                <motion.div
-                  key={i}
-                  className="relative"
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: i * 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <div
-                    className={`absolute -left-8 top-1 w-8 h-8 rounded-full ${event.color} flex items-center justify-center text-white text-md shadow-md`}
+            <div className="relative flex flex-col gap-16">
+              {/* Vertical animated gradient line */}
+              <div className="hidden sm:block absolute left-1/2 top-0 h-full w-2 -translate-x-1/2 z-0">
+                <div className="h-full w-full bg-gradient-to-b from-[#FCEF91] via-[#E6521F] to-[#FCEF91] animate-gradient-move rounded-full blur-[1.5px] shadow-2xl"></div>
+              </div>
+              {timelineData.map((event, i) => {
+                const isLeft = i % 2 === 0;
+                return (
+                  <motion.div
+                    key={i}
+                    className={`relative flex flex-col sm:flex-row items-center sm:items-stretch ${isLeft ? 'sm:justify-start' : 'sm:justify-end'} group`}
+                    initial={{ opacity: 0, x: isLeft ? -80 : 80 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, delay: i * 0.18 }}
+                    viewport={{ once: true }}
                   >
-                    {event.icon}
-                  </div>
-                  <div className="ml-4">
-                    <div className="text-2xl font-semibold text-[#FCEF91]">{event.year}</div>
-                    <p className="text-[#E6521F] text-lg tracking-wide font-[500]">{event.title}</p>
-                  </div>
-                </motion.div>
-              ))}
+                    {/* Timeline Dot with Glow */}
+                    <div
+                      className={`z-20 flex items-center justify-center w-14 h-14 rounded-full border-4 border-[#FCEF91] shadow-2xl bg-[#E6521F] absolute left-1/2 -translate-x-1/2 sm:static sm:translate-x-0 animate-glow`}
+                      style={{ boxShadow: `0 0 32px 8px #FCEF91` }}
+                    >
+                      <span className="text-3xl text-[#FCEF91] drop-shadow-lg">{event.icon}</span>
+                    </div>
+                    {/* Card */}
+                    <div
+                      className={`mt-20 sm:mt-0 sm:max-w-[48%] w-full ${isLeft ? 'sm:ml-12 sm:mr-auto' : 'sm:mr-12 sm:ml-auto'} bg-white/10 backdrop-blur-xl rounded-2xl shadow-2xl px-8 py-7 border-l-8 border-[#FCEF91] hover:scale-[1.03] transition-transform duration-300 relative`}
+                    >
+                      <div className="text-2xl sm:text-3xl font-extrabold text-[#FCEF91] mb-2 drop-shadow">{event.year}</div>
+                      <div className="text-black/50 text-xl sm:text-2xl font-bold mb-2 tracking-wider drop-shadow">{event.title}</div>
+                      {event.description && (
+                        <p className="text-white/90 text-base sm:text-lg leading-relaxed font-medium drop-shadow-sm">{event.description}</p>
+                      )}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           </div>
+          {/* Keyframes for animated gradient and glow */}
+          <style>{`
+            @keyframes gradient-move {
+              0% { background-position: 0% 50%; }
+              100% { background-position: 100% 50%; }
+            }
+            .animate-gradient-move {
+              background-size: 200% 200%;
+              animation: gradient-move 3s linear infinite alternate;
+            }
+            @keyframes glow {
+              0%, 100% { box-shadow: 0 0 32px 8px #FCEF91, 0 0 0 0 #E6521F; }
+              50% { box-shadow: 0 0 48px 16px #E6521F, 0 0 0 0 #FCEF91; }
+            }
+            .animate-glow {
+              animation: glow 2.5s ease-in-out infinite;
+            }
+          `}</style>
         </motion.section>
 
         {/* CTA */}

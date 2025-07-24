@@ -285,7 +285,7 @@ const Home = () => {
             <div className='w-screen mt-15 -mx-15 px-0'>
                 <ScrollVelocity
                     texts={['Tech Burner', 'Scroll Down']}
-                    velocity={100}
+                    velocity={50}
                     className="custom-scroll-text tracking-wider text-[#FCEF91]"
                 />
             </div>
@@ -359,4 +359,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Home;

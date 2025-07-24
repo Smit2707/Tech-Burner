@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from "motion/react"
+import { Link } from 'react-router-dom';
 
 const Layers = () => {
   const colors = [
@@ -241,9 +242,9 @@ const Layers = () => {
             ))}
           </div>
           {/* Buy CTA */}
-          <button className="mt-6 px-10 py-4 rounded-full bg-neutral-900 text-white text-lg font-[200] shadow-md transition hover:bg-neutral-800 tracking-wider">
+          <Link to="/anarc-details" className="mt-6 px-10 py-4 rounded-full bg-neutral-900 text-white text-lg font-[200] shadow-md transition hover:bg-neutral-800 tracking-wider">
             Buy Now at ₹ 6849/-
-          </button>
+          </Link>
         </section>
       </motion.section>
 
