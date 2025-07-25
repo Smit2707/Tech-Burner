@@ -1,11 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { motion } from "motion/react"
-import { Link, Links } from 'react-router-dom'
+import { motion } from "framer-motion"
+import { Link } from 'react-router-dom'
 import { FaYoutube } from "react-icons/fa";
 import VideoCard from '../components/VideoCard';
 import NewsLetter from '../components/NewsLetter';
 import ScrollVelocity from '../components/ScrollVelocity';
-import ModelViewer from '../components/ModalViewer';
 import CircularGallery from '../components/CircularGallery';
 
 const Home = () => {
@@ -22,46 +21,44 @@ const Home = () => {
     const slides = [
         {
             title: "Community-Driven Culture",
-            subtitle:
-                "More than just a brand, we’re a movement—connecting creatives, skaters, and trendsetters who define the streets.",
-            label: "Community-Driven Culture",
+            subtitle: "More than just a brand, we're a movement—connecting creatives, skaters, and trendsetters who define the streets.",
+            label: "Community",
             route: "/overlays"
         },
         {
             title: "Limited Drops, Maximum Impact",
             subtitle: "Exclusive drops for those who want to make a statement without compromise.",
-            label: "Limited Drops, Maximum Impact",
+            label: "Drops",
             route: "/layers"
         },
         {
             title: "Built for the Streets",
             subtitle: "Durable, comfortable, and made to stand up to any challenge.",
-            label: "Built for the Streets",
+            label: "Streetwear",
             route: "/overlays"
         },
         {
             title: "Art Meets Attitude",
             subtitle: "Where artistic expression finds its streetwise edge.",
-            label: "Art Meets Attitude",
+            label: "Art",
             route: "/layers"
         },
         {
             title: "Future-Ready Fashion",
             subtitle: "Pioneering materials and cuts for the next generation.",
-            label: "Future-Ready Fashion",
+            label: "Future",
             route: "/overlays"
         },
     ];
 
     const SLIDE_DURATION = 5000;
-    const FADE_DURATION = 800; // in ms
+    const FADE_DURATION = 800;
     const [current, setCurrent] = useState(0);
     const [fadeState, setFadeState] = useState('fade-in');
     const timerRef = useRef(null);
     const animationTimerRef = useRef(null);
 
     useEffect(() => {
-        // Start fade-out a bit before slide switches
         animationTimerRef.current = setTimeout(() => {
             setFadeState('fade-out');
         }, SLIDE_DURATION - FADE_DURATION);
@@ -71,7 +68,6 @@ const Home = () => {
 
     useEffect(() => {
         if (fadeState === 'fade-out') {
-            // After fade-out, switch slide and fade-in
             timerRef.current = setTimeout(() => {
                 setCurrent((prev) => (prev + 1) % images.length);
                 setFadeState('fade-in');
@@ -87,142 +83,21 @@ const Home = () => {
             setFadeState('fade-in');
         }, FADE_DURATION);
     };
+
     return (
-        <motion.div
-            className='w-full h-full mt-10'>
-            {/* hero */}
-            {/* <section className='w-full  h-[70vh] flex justify-around rounded-xl overflow-hidden'>
-
-                <motion.div
-                    initial={{
-                        x: -700,
-                        opacity: 0,
-                        filter: "blur(10px)"
-                    }}
-                    animate={{
-                        x: 0,
-                        opacity: 1,
-                        filter: "blur(0px)"
-                    }}
-                    transition={{
-                        // ease: "easeInOut",
-                        duration: 0.3
-                    }}
-                    whileHover={{
-                        scale: 0.89
-                    }}
-                    className='h-full w-[50%] p-10 cursor-pointer relative'>
-                    <h3 className='absolute text-[6vw] text-black opacity-25 rotate-45 right-1 top-20 '>OVERLAYS</h3>
-                    <h3 className='absolute text-[6vw] text-black opacity-25 rotate-45 right-1 top-20 '>OVERLAYS</h3>
-                    <h3 className='absolute text-[6vw] text-black opacity-25 rotate-45 left-1 bottom-20 '>OVERLAYS</h3>
-                    <h3 className='absolute text-[6vw] text-black opacity-25 rotate-45 left-1 bottom-20 '>OVERLAYS</h3>
-                    <img className='h-full w-full rounded-xl object-cover object-[50%_10%]' src="/tech2.jpg" alt="" />
-                </motion.div>
-                <motion.div
-                    ref={constraintRef}
-
-                    transition={{
-                        ease: "easeInOut",
-                        duration: 1,
-                        delay: 0.5
-                    }} className='w-[40%]  bg-transparent h-full flex flex-col items-start justify-center'>
-                    <div>
-                        <motion.h2
-                            initial={{
-                                rotate: 0,
-                                x: 1000,
-                                opacity: 0
-                            }}
-                            animate={{
-                                x: 0,
-                                opacity: 1
-                            }}
-                            whileHover={{
-                                rotate: 25,
-                                scale: 0.68
-                            }}
-                            transition={{
-                                duration: 1,
-                                ease: 'anticipate'
-                            }}
-                            className='text-[7.5vw] font-bold text-[#FCEF91] tracking-wide leading-28 cursor-pointer'>
-                            Hi I'm <span className='text-[#E6521F]'>Tech</span> Burner
-                        </motion.h2>
-                        <motion.h4
-                            initial={{
-                                rotate: 0,
-                                x: 3000,
-                                opacity: 0
-                            }}
-                            animate={{
-                                x: 0,
-                                opacity: 1
-                            }}
-                            whileHover={{
-                                rotate: -25,
-                                scale: 0.68
-                            }}
-                            transition={{
-                                duration: 1,
-                                ease: 'anticipate'
-                            }}
-                            className='text-[4vw] w-full text-end text-[#E6521F] cursor-pointer'>
-                            I make tech Fun
-                        </motion.h4>
-                    </div>
-                    <motion.button
-                        initial={{
-                            rotate: 0,
-                            opacity: 0
-                        }}
-                        animate={{
-                            x: 0,
-                            opacity: 1
-                        }}
-                        transition={{
-                            duration: 0.3,
-                            ease: "anticipate"
-                        }}
-                        drag
-                        whileDrag={{
-                            scale: "0.85"
-                        }}
-                        dragConstraints={constraintRef}
-                        whileHover={{
-                            scale: 1.10,
-                            boxShadow: "1px 1px 100px #FCEF91"
-                        }}
-                        whileTap={{
-                            scale: 0.95
-                        }}
-                        onClick={() => window.open("https://www.youtube.com/@TechBurner/videos", "_blank")}
-                        className='text-2xl bg-[#EA2F14] px-4 py-2 rounded-lg tracking-wider cursor-pointer outline-none' >
-                        🔥 Watch My Videos
-                    </motion.button>
-                </motion.div>
-            </section> */}
-
+        <motion.div className='w-full h-full mt-4 md:mt-10'>
+            {/* Hero Slider */}
             <motion.div
-                initial={{
-                    scale: 0.8,
-                    opacity: 0,
-                    filter: "blur(10px)"
-                }}
-                animate={{
-                    scale: 1,
-                    opacity: 1,
-                    filter: "blur(0px)"
-                }}
-                transition={{
-                    duration: 0.8,
-                    delay: 0.4,
-                    ease: "anticipate"
-                }}
-                className="relative min-h-[80vh] bg-black my-10 flex items-center justify-center tracking-widest overflow-hidden rounded-br-[8rem] rounded-tl-[8rem]">
+                initial={{ scale: 0.8, opacity: 0, filter: "blur(10px)" }}
+                animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 0.8, delay: 0.4, ease: "anticipate" }}
+                className="relative min-h-[50vh] md:min-h-[80vh] bg-black my-4 md:my-10 flex items-center justify-center tracking-widest overflow-hidden rounded-br-[2rem] rounded-tl-[2rem] md:rounded-br-[8rem] md:rounded-tl-[8rem]"
+            >
                 {/* Animated background image */}
                 <div
-                    className={`absolute inset-0 bg-[50%_15%] bg-cover transition-transform transition-opacity duration-700 ease-out ${fadeState === 'fade-in' ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
-                        }`}
+                    className={`absolute inset-0 bg-[50%_15%] bg-cover transition-transform transition-opacity duration-700 ease-out ${
+                        fadeState === 'fade-in' ? 'scale-100 opacity-100' : 'scale-105 opacity-0'
+                    }`}
                     style={{ backgroundImage: `url('${images[current]}')` }}
                     key={current}
                 />
@@ -230,22 +105,26 @@ const Home = () => {
 
                 {/* Animated content */}
                 <div
-                    className={`relative z-20 flex flex-col gap-5 justify-center px-20 items-start w-full py-24 transition-opacity duration-700 ease-in-out ${fadeState === 'fade-in' ? 'opacity-100' : 'opacity-0'
-                        }`}
+                    className={`relative z-20 flex flex-col gap-2 md:gap-5 justify-center px-6 md:px-20 items-start w-full py-12 md:py-24 transition-opacity duration-700 ease-in-out ${
+                        fadeState === 'fade-in' ? 'opacity-100' : 'opacity-0'
+                    }`}
                 >
-                    <h1 className="text-white text-4xl sm:text-5xl font-extrabold uppercase tracking-wider mb-4">
+                    <h1 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-wider mb-2 md:mb-4">
                         {slides[current].title}
                     </h1>
-                    <p className="text-gray-200 text-lg">
+                    <p className="text-gray-200 text-sm md:text-base lg:text-lg">
                         {slides[current].subtitle}
                     </p>
-                    <Link to={slides[current].route} className="mt-8 px-8 py-3 rounded-full bg-white text-black font-medium shadow-lg transition hover:bg-transparent hover:text-white hover:border focus:outline-none">
+                    <Link 
+                        to={slides[current].route} 
+                        className="mt-4 md:mt-8 px-4 py-2 md:px-8 md:py-3 rounded-full bg-white text-black text-sm md:text-base font-medium shadow-lg transition hover:bg-transparent hover:text-white hover:border focus:outline-none"
+                    >
                         Shop now →
                     </Link>
                 </div>
 
-                {/* Bottom navigation */}
-                <div className="absolute bottom-6 left-0 right-0 flex w-full justify-between px-20 z-30">
+                {/* Bottom navigation - Hidden on mobile, shown on tablet+ */}
+                <div className="hidden sm:flex absolute bottom-6 left-0 right-0 w-full justify-between px-6 md:px-20 z-30">
                     {slides.map((slide, idx) => (
                         <div
                             key={idx}
@@ -253,59 +132,70 @@ const Home = () => {
                             onClick={() => goTo(idx)}
                         >
                             <span
-                                className={`text-lg font-semibold transition-all duration-300 ${current === idx
-                                    ? "text-white drop-shadow-lg"
-                                    : "text-gray-400 group-hover:text-gray-200"
-                                    }`}
+                                className={`text-sm md:text-lg font-semibold transition-all duration-300 ${
+                                    current === idx
+                                        ? "text-white drop-shadow-lg"
+                                        : "text-gray-400 group-hover:text-gray-200"
+                                }`}
                             >
                                 {String(idx + 1).padStart(2, "0")}
                             </span>
                             <span
-                                className={`transition-all duration-300 text-xs ${current === idx
-                                    ? "text-white"
-                                    : "text-gray-400 group-hover:text-gray-200"
-                                    }`}
+                                className={`transition-all duration-300 text-xs ${
+                                    current === idx
+                                        ? "text-white"
+                                        : "text-gray-400 group-hover:text-gray-200"
+                                }`}
                             >
                                 {slide.label}
                             </span>
-                            {current === idx && <span className="block w-10 h-1 bg-white rounded-full mt-1" />}
+                            {current === idx && <span className="block w-6 md:w-10 h-1 bg-white rounded-full mt-1" />}
                         </div>
                     ))}
                 </div>
+
+                {/* Mobile dots navigation */}
+                <div className="sm:hidden absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-30">
+                    {slides.map((_, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => goTo(idx)}
+                            className={`w-3 h-3 rounded-full transition-all ${
+                                current === idx ? 'bg-white scale-110' : 'bg-gray-400'
+                            }`}
+                            aria-label={`Go to slide ${idx + 1}`}
+                        />
+                    ))}
+                </div>
             </motion.div>
-            {/* <div className='flex justify-between'>
-                <div className='text-6xl'>tech burner</div>
-                <ModelViewer
-                    url="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/main/2.0/ToyCar/glTF-Binary/ToyCar.glb"
-                    width="60%"
-                    height={400}
+
+            {/* Scrolling text */}
+            {/* <div className='w-screen mt-8 md:mt-15 px-0 overflow-hidden'>
+                <ScrollVelocity
+                    texts={['Tech Burner', 'Scroll Down']}
+                    velocity={30}
+                    className="custom-scroll-text tracking-wider text-[#FCEF91] text-xl md:text-2xl"
                 />
             </div> */}
 
-            <div className='w-screen mt-15 -mx-15 px-0'>
-                <ScrollVelocity
-                    texts={['Tech Burner', 'Scroll Down']}
-                    velocity={50}
-                    className="custom-scroll-text tracking-wider text-[#FCEF91]"
-                />
-            </div>
-
-            {/* popular videos */}
+            {/* Popular videos */}
             <motion.section
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, ease: "anticipate" }}
-                className='mt-15'
+                className='mt-8 md:mt-15 px-4 md:px-0'
             >
-                <div className='w-full flex justify-between items-center my-10'>
-                    <h3 className='text-5xl font-bold tracking-wide text-white drop-shadow-lg'>Popular Videos</h3>
+                <div className='w-full flex flex-col sm:flex-row justify-between items-center my-6 md:my-10 gap-4'>
+                    <h3 className='text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-white drop-shadow-lg text-center sm:text-left'>
+                        Popular Videos
+                    </h3>
                     <motion.button
                         whileHover={{
                             scale: 1.10,
                             boxShadow: "1px 1px 100px #FCEF91"
                         }}
                         onClick={() => window.open("https://www.youtube.com/@TechBurner/featured", "_blank")}
-                        className='text-xl tracking-wider bg-[#EA2F14] outline-none px-4 py-2 rounded-lg flex gap-2 items-center shadow-lg cursor-pointer'
+                        className='text-base md:text-xl tracking-wider bg-[#EA2F14] outline-none px-4 py-2 rounded-lg flex gap-2 items-center shadow-lg cursor-pointer'
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -314,7 +204,7 @@ const Home = () => {
                     </motion.button>
                 </div>
                 <motion.div
-                    className='flex justify-between gap-6'
+                    className='flex flex-col md:flex-row justify-between gap-4 md:gap-6'
                     initial="hidden"
                     animate="visible"
                     variants={{
@@ -324,7 +214,7 @@ const Home = () => {
                         }
                     }}
                 >
-                    {[ // Array for mapping
+                    {[
                         "https://www.youtube-nocookie.com/embed/4XsfwD1ZwlU?si=MDLTGfXewjEkSzDz",
                         "https://www.youtube-nocookie.com/embed/VQeySLmSMhc?si=5WhmjIvYayEG5igB",
                         "https://www.youtube-nocookie.com/embed/fOwU3Iav72c?si=cDYYg_EMMeQo7Rip"
@@ -340,8 +230,7 @@ const Home = () => {
                                 scale: 1.04,
                                 boxShadow: "0 8px 32px rgba(0,0,0,0.18)"
                             }}
-                            className="rounded-xl overflow-hidden bg-white shadow-md "
-                            style={{ flex: 1 }}
+                            className="rounded-xl overflow-hidden bg-white shadow-md w-full md:w-1/3"
                         >
                             <VideoCard src={src} />
                         </motion.div>
@@ -349,14 +238,26 @@ const Home = () => {
                 </motion.div>
             </motion.section>
 
-            <div className='mb-15 mt-15' style={{ height: '600px', position: 'relative' }}>
-                <h2 className='text-5xl font-semibold tracking-widest '>Gallery of Greats</h2>
-                <CircularGallery bend={-2} textColor="#ffffff" borderRadius={0.05} scrollEase={0.03} scrollSpeed={0.3} />
+            {/* Circular Gallery */}
+            <div className='mb-8 md:mb-15 mt-8 md:mt-15 px-4 md:px-0' style={{ height: '400px', position: 'relative' }}>
+                <h2 className='text-3xl md:text-4xl lg:text-5xl font-semibold tracking-widest text-center md:text-left mb-4'>
+                    Gallery of Greats
+                </h2>
+                <CircularGallery 
+                    bend={-2} 
+                    textColor="#ffffff" 
+                    borderRadius={0.05} 
+                    scrollEase={0.03} 
+                    scrollSpeed={0.3} 
+                />
             </div>
 
-            <NewsLetter />
+            {/* Newsletter */}
+            <div className='px-4 md:px-0'>
+                <NewsLetter />
+            </div>
         </motion.div>
     )
 }
 
-export default Home;
+export default Home

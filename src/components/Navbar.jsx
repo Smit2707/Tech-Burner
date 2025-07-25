@@ -40,7 +40,7 @@ const Navbar = () => {
             <motion.button
               key={item.path}
               onClick={() => navigate(item.path)}
-              className={`relative text-base sm:text-lg font-semibold px-2 py-1 transition-colors duration-200 focus:outline-none tracking-widest ${location.pathname === item.path ? "text-[#FCEF91]" : "text-black/60 hover:text-[#FCEF91]"}`}
+              className={`relative text-base sm:text-lg font-semibold px-2 py-1 transition-colors duration-200 focus:outline-none tracking-widest cursor-pointer ${location.pathname === item.path ? "text-[#FCEF91]" : "text-black/60 hover:text-[#FCEF91]"}`}
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -55,7 +55,7 @@ const Navbar = () => {
           {isLogin === "true" ? (
             <motion.button
               onClick={handleLogout}
-              className="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#E6521F] to-[#FCEF91] text-black font-bold text-base shadow-md hover:scale-105 transition-transform duration-200"
+              className="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#E6521F] to-[#FCEF91] text-black font-bold shadow-md hover:scale-105 transition-transform duration-200 tracking-wider text-lg"
               whileHover={{ scale: 1.06 }}
               whileTap={{ scale: 0.96 }}
             >
@@ -64,7 +64,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/signup"
-              className="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#FCEF91] to-[#FFD580] text-[#E6521F] font-bold text-base shadow-md hover:scale-105 transition-transform duration-200 border border-[#E6521F]/30"
+              className="ml-2 px-5 py-2 rounded-full bg-gradient-to-r from-[#FCEF91] to-[#FFD580] text-[#E6521F] font-bold shadow-md hover:scale-105 transition-transform duration-200 border border-[#E6521F]/30 tracking-wider text-lg"
             >
               Sign Up
             </Link>
