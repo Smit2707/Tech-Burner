@@ -60,9 +60,9 @@ const Cart = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-[#FCEF91] py-8 px-4 sm:px-6 lg:px-8">
+        <div className="min-h-screen w-screen -mx-15 xl:px-0 text-[#FCEF91] py-8 px-4 mt-5 md:mt-5 sm:px-6 lg:px-8 tracking-widest">
             <div className="max-w-7xl mx-auto">
-                <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center uppercase tracking-wider">Shopping Cart</h1>
+                <h1 className="text-3xl sm:text-4xl xl:text-6xl font-bold mb-8 text-center uppercase tracking-wider">Shopping Cart</h1>
 
                 {cartItems.length === 0 ? (
                     <motion.div
