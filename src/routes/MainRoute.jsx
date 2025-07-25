@@ -11,7 +11,6 @@ import Layers from '../pages/Layers'
 import ProductDetails from '../pages/ProductDetails'
 import Login from '../pages/Login'
 import ButAnarc from '../pages/ButAnarc'
-import Cart from '../pages/Cart'
 
 const MainRoute = () => {
     return (
@@ -28,7 +27,6 @@ const MainRoute = () => {
             <Route path='/layers' element={<Layers />} />
             <Route path='/product-details' element={<ProductDetails />} />
             <Route path='/anarc-details' element={<ButAnarc />} />
-            <Route path='/cart' element={<Cart />} />
         </Routes>
     )
 }

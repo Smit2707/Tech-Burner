@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
 import { Auth0Provider } from '@auth0/auth0-react';
 import { ToastContainer } from 'react-toastify'
+import ScrollToTop from "./components/ScrollToTop";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         {/* <CustomCursor /> */}
         {/* <ThemeToggle  /> */}
         <Navbar />
+        <ScrollToTop />
         <MainRoute />
         <Footer />
         <ToastContainer theme='dark' autoClose={3000} position='bottom-right' />
